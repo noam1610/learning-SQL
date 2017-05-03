@@ -192,20 +192,51 @@ GROUP BY price;
 
 Let's work with two tables:
  * artists
-
 | attribut|type|
 |-------------|-------------|
 |id|INTEGER|
 |name|TEXT|
-
+ * albums
+| attribut|type|
+|-------------|-------------|
+|id|INTEGER|
+|name|TEXT|
+|artist_id|INTEGER|
+|year|INTEGER|
 
 
 Joining two tables with a foreign key
 ```SQL
-SELECT albums.name, albums.year, artists.name FROM albums, artists
+SELECT
+  *
+FROM
+  albums
+JOIN artists ON
+  albums.artist_id = artists.id;
 ```
 
+If we need to let rows with no artist_id we add LEFT
+```SQL
+SELECT
+  *
+FROM
+  albums
+LEFT JOIN artists ON
+  albums.artist_id = artists.id;
+```
 
-
+AS is used to rename column
+```SQL
+SELECT
+  albums.name AS 'Album',
+  albums.year,
+  artists.name AS 'Artist'
+FROM
+  albums
+JOIN artists ON
+  albums.artist_id = artists.id
+WHERE
+  albums.year > 1980;
+```
 
 
