@@ -1,5 +1,7 @@
 #Some training about SQL
 
+This is taken from learn SQL in codeAcademy
+
 ## Important commands
 
 
@@ -114,67 +116,94 @@ LIMIT 3;
 ```
 
 
+### Calcul Operation on the command
 
 
 
+Count the number of rows
+```SQL
+SELECT COUNT(*) FROM fake_apps;
+```
+
+Count a number of rows with filter
+```SQL
+SELECT COUNT(*) FROM fake_apps
+WHERE price = 0;
+```
+
+
+Count the number of rows for each type of price
+```SQL
+SELECT price, COUNT(*) FROM fake_apps
+GROUP BY price;
+```
+GROUP BY is a clause in SQL that is only used with aggregate functions. It is used in collaboration with the SELECT statement to arrange identical data into groups.
+
+Count the number of rows for each type of price and filtering
+```SQL
+ELECT price, COUNT(*) FROM fake_apps
+WHERE downloads > 20000
+GROUP BY price;
+```
+
+Make sum over one attribute
+```SQL
+SELECT SUM(downloads) FROM fake_apps;
+```
+
+
+Find the max value of a parameter over one column
+```SQL
+SELECT MAX(downloads) FROM fake_apps;
+```
+
+filter
+```SQL
+SELECT name, category, MAX(downloads) FROM fake_apps
+GROUP BY category;
+```
+
+
+idem with MIN
+```SQL
+SELECT MIN(downloads) FROM fake_apps;
+```
+
+Select the min value of download for each category label
+```SQL
+SELECT name, category, MIN(downloads) FROM fake_apps
+GROUP BY category;
+```
+
+Idem with Average
+```SQL
+SELECT price, AVG(downloads) FROM fake_apps
+GROUP BY price;
+```
+
+Round function:
+```SQL
+SELECT price, ROUND(AVG(downloads), 0) FROM fake_apps
+GROUP BY price;
+```
+
+
+###Working with several tables
+
+Let's work with two tables:
+ * artists
+
+| artiste   |
+| ------------- | -------------   |
+|id|     INTEGER     |
+|name|      TEXT |
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Joining two tables with a foreign key
+```SQL
+SELECT albums.name, albums.year, artists.name FROM albums, artists
+```
 
 
 
