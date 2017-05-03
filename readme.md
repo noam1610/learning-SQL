@@ -193,10 +193,10 @@ GROUP BY price;
 Let's work with two tables:
  * artists
 
-| artiste   |
-| ------------- | -------------   |
-|id|     INTEGER     |
-|name|      TEXT |
+| attribut|type|
+|-------------|-------------|
+|id|INTEGER|
+|name|TEXT|
 
 
 
